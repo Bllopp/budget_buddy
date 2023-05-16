@@ -20,6 +20,7 @@ export default {
     const res = await fetch('http://localhost:8000/events');
     const data = await res.json();
     this.events = data;
+    console.log(this.events)
   },
 };
 </script>
