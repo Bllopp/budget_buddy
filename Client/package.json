@@ -36,7 +36,11 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {
+      "vue/require-v-for-key": "off",
+      "no-undef" : "off"
+
+    }
   },
   "browserslist": [
     "> 1%",

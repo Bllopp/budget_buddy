@@ -37,7 +37,21 @@ let events =
     location: '1234 Dog Alley',
     date: '11-21-2019',
     time: '12:00'
+  },
+  {
+    id: 3,
+    name: "Charity Walk for Children's Hospital",
+    category: "Fundraising",
+    description: "Join us for a charity walk to raise funds for children's hospital. The event will feature a 5K walk, live music, food trucks, and much more.",
+    featuredImage: "https://placekitten.com/600/600",
+    images: [
+      "https://placekitten.com/600/600"
+    ],
+    location: "Central Park",
+    date: "2023-07-15",
+    time: "10:00"
   }
+  
 ];
 
 app.get('/', (req, res) => {
