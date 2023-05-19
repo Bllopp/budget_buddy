@@ -2,6 +2,7 @@
   <body>
 
   <div id='bg' style=""> <h2 id="title">{{ title }}</h2></div>
+
    
 
   </body>
@@ -27,6 +28,7 @@ body{
     padding: 0;
     margin: 0;
     background-color:#EF7F7F;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     
 
  }
