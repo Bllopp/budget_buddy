@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/valid-v-for -->
 <template>
   <MyHeader title="Your expences"/>
   <div class='carrousel' style='background-color: lightgray;'>
@@ -16,6 +17,8 @@ import MyCarrousel from './components/MyCarrousel.vue';
 import MyHeader from './components/MyHeader.vue';
 import MyHistoric from './components/MyHistoric.vue';
 
+import *  as routerJs from '@/router/index';
+
 export default {
   name: 'App',
   components: {
@@ -23,6 +26,11 @@ export default {
     MyHeader,
     MyCarrousel,
     MyHistoric
+},
+data(){
+  return {
+    routerJs,
+  }
 }
 }
 </script>

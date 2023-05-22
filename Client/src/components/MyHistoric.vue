@@ -4,6 +4,7 @@
     <div v-for="event in events" :key="event.id">
     <Historic_item :data=event />
     </div>
+    <div id="buton"><router-link to="/" >+</router-link></div>
   </div>
 </template>
 
@@ -32,6 +33,14 @@ components: {
 </script>
 
 <style>
+#buton {
+
+  position: sticky;
+  width : fit-content;
+  height: fit-content;
+  border-radius: 100%;
+  background-color: pink;
+}
 
 #historic{
     height: 100%;

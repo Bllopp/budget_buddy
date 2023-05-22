@@ -1,8 +1,20 @@
 <template>
   <body>
 
-  <div id='bg' style=""> <h2 id="title">{{ title }}</h2></div>
-
+  <div id='bg' style=""> <h2 id="title">{{ title }}</h2>
+    <router-view />
+  </div>
+  <div >
+    <nav>
+      <!--
+      <router-link to="route.path"  v-for="route in routerJs.routes"> {{ route.name }} </router-link> (does not work)
+    -->
+    <router-link to="/"> home </router-link>
+    <router-link to="/loginView"> login </router-link>
+    <router-link to="/myBudgetView"> budget </router-link>
+    </nav>
+      
+  </div>
    
 
   </body>
