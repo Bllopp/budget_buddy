@@ -1,6 +1,7 @@
 <!-- eslint-disable vue/valid-v-for -->
 <template>
   <MyHeader title="Your expences"/>
+  <Add_receipt/>
   <div class='carrousel' style='background-color: lightgray;'>
     <MyCarrousel />
   </div>
@@ -16,6 +17,7 @@
 import MyCarrousel from './components/MyCarrousel.vue';
 import MyHeader from './components/MyHeader.vue';
 import MyHistoric from './components/MyHistoric.vue';
+import Add_receipt from './components/Add_receipt.vue';
 
 import *  as routerJs from '@/router/index';
 
@@ -25,7 +27,8 @@ export default {
     // HelloWorld
     MyHeader,
     MyCarrousel,
-    MyHistoric
+    MyHistoric,
+    Add_receipt
 },
 data(){
   return {

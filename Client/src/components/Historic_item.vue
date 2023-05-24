@@ -31,7 +31,7 @@ props: {
 
 <style>
     .historic_item{
-        background-color: #e97a7ac2;
+        background-color: rgba(91, 187, 204, 0.761);
         border: solid black 1x ;
         border-radius: 5pt;
         width: 90%;
