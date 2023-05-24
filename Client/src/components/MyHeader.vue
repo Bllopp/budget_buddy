@@ -9,9 +9,11 @@
       <!--
       <router-link to="route.path"  v-for="route in routerJs.routes"> {{ route.name }} </router-link> (does not work)
     -->
-    <router-link to="/"> home </router-link>
-    <router-link to="/loginView"> login </router-link>
-    <router-link to="/myBudgetView"> budget </router-link>
+    <button @click = "tab='Home'"><p>Home</p></button>
+    <button @click = "tab='login'"><p>login</p></button>
+    <button @click = "tab='budget'"><p>budget</p></button>
+    <button @click = "tab='register'"><p>register</p></button>
+    <component :is = "tab" />
     </nav>
       
   </div>
@@ -25,6 +27,11 @@ export default {
 name : 'MyHeader',
 props : {
     title : String
+},
+data() {
+  return {
+    tab : "Home"
+  }
 }
 }
 </script>

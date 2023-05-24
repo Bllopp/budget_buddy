@@ -1,35 +1,37 @@
 <!-- eslint-disable vue/valid-v-for -->
 <template>
-  <MyHeader title="Your expences"/>
-  <div class='carrousel' style='background-color: lightgray;'>
-    <MyCarrousel />
-  </div>
-  <div>
-    <MyHistoric />
-  </div>
-  <!-- <img alt="BB Logo" src="./assets/BudgetBuddy_logo.png" class="logo"> -->
-  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+  <nav>
+    <button @click = "tab='HomeView'"><p>Home</p></button>
+    <button @click = "tab='LoginView'"><p>login</p></button>
+    <button @click = "tab='myBudgetView'"><p>budget</p></button>
+    <button @click = "tab='registerView'"><p>register</p></button>
+    
+  </nav>
+  <component :is = "tab" />
+
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import MyCarrousel from './components/MyCarrousel.vue';
-import MyHeader from './components/MyHeader.vue';
-import MyHistoric from './components/MyHistoric.vue';
+import HomeView from './views/HomeView.vue';
+import LoginView from './views/loginView.vue';
+import myBudgetView from './views/myBudgetView';
+import registerView from './views/registerView.vue';
 
-import *  as routerJs from '@/router/index';
+
 
 export default {
   name: 'App',
   components: {
     // HelloWorld
-    MyHeader,
-    MyCarrousel,
-    MyHistoric
+    HomeView,
+    LoginView,
+    myBudgetView,
+    registerView,
 },
 data(){
   return {
-    routerJs,
+    tab : "HomeView"
   }
 }
 }
