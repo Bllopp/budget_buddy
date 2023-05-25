@@ -1,4 +1,4 @@
-<!-- eslint-disable vue/valid -->
+<!-- eslint-disable vue -->
 <template>
     <canvas id="chart"></canvas>
   </template>
@@ -25,4 +25,13 @@
     },
   };
   </script>
+
+  <style scoped>
+  canvas {
+    width: 50px;
+    height: 50 px;
+
+  }
+
+</style>
   
