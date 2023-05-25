@@ -1,7 +1,8 @@
 <template>
     <body>
-            <MyHistoric />
         <MyCarrouselVue  />
+        <MyHistoric />
+      
     </body>
 
 </template>

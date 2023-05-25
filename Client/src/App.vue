@@ -1,4 +1,5 @@
 <!-- eslint-disable vue/valid-v-for -->
+
 <template>
   <div>
     <MyHeader title="Budget Buddy" />
@@ -9,7 +10,7 @@
     <button class="nav" @click = "tab='registerView'"><p>register</p></button>
   </nav> -->
   <component :is = "tab"/>
-  <Add_receipt  @click = "tab='New_receipt'"/>
+  <Add_receipt  @click = "tab='NewReceiptView'"/>
   </div>
 
 </template>
@@ -22,7 +23,7 @@ import HomeView from './views/HomeView.vue';
 import LoginView from './views/loginView.vue';
 import myBudgetView from './views/myBudgetView';
 import registerView from './views/registerView.vue';
-
+import NewReceiptView from './views/NewReceipt.vue';
 
 
 export default {
@@ -35,6 +36,7 @@ export default {
     registerView,
     Add_receipt,
     MyHeader,
+    NewReceiptView,
 },
 data(){
   return {
