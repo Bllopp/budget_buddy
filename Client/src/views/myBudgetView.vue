@@ -1,5 +1,18 @@
 <template>
-    <p>here is my budget view</p>
+    <div>
+        <ChartItem />
+        <p>here is my budget view</p>
+    </div>
+    
     
     </template>
-    <script></script>
+    <script>
+    import ChartItem from '@/components/ChartItem.vue';
+
+    export default {
+        components : {
+            ChartItem,
+        },
+        name:"myBudgetView"
+    }
+</script>
