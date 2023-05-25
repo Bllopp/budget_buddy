@@ -1,22 +1,21 @@
 <template>
   <body>
 
-  <div id='bg' style=""> <h2 id="title">{{ title }}</h2>
-    <router-view />
+  <div id='bg' style="">
+     <h2 id="title">{{ title }}</h2>
+    
   </div>
-  <div >
-    <nav>
-      <!--
-      <router-link to="route.path"  v-for="route in routerJs.routes"> {{ route.name }} </router-link> (does not work)
-    -->
-    <button @click = "tab='Home'"><p>Home</p></button>
-    <button @click = "tab='login'"><p>login</p></button>
-    <button @click = "tab='budget'"><p>budget</p></button>
-    <button @click = "tab='register'"><p>register</p></button>
-    <component :is = "tab" />
-    </nav>
-      
-  </div>
+  <!-- <div > -->
+    <!-- <nav> -->
+   <!--  -->
+    <!-- <button @click = "tab='Home'"><p>Home</p></button> -->
+    <!-- <button @click = "tab='login'"><p>login</p></button> -->
+    <!-- <button @click = "tab='budget'"><p>budget</p></button> -->
+    <!-- <button @click = "tab='register'"><p>register</p></button> -->
+    <!-- <component :is = "tab" /> -->
+    <!-- </nav> -->
+      <!--  -->
+  <!-- </div> -->
    
 
   </body>
