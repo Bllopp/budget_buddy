@@ -1,5 +1,6 @@
 <!-- eslint-disable vue/valid-v-for -->
 <template>
+  <div>
   <nav class="nav">
     <button class="nav" @click = "tab='HomeView'"><p>Home</p></button>
     <button class="nav" @click = "tab='LoginView'"><p>login</p></button>
@@ -7,10 +8,13 @@
     <button class="nav" @click = "tab='registerView'"><p>register</p></button>
   </nav>
   <component :is = "tab"/>
+  <Add_receipt  @click = "tab='New_receipt'"/>
+  </div>
 
 </template>
 
 <script>
+import Add_receipt from './components/Add_receipt.vue';
 // import HelloWorld from './components/HelloWorld.vue'
 import HomeView from './views/HomeView.vue';
 import LoginView from './views/loginView.vue';
@@ -27,6 +31,7 @@ export default {
     LoginView,
     myBudgetView,
     registerView,
+    Add_receipt,
 },
 data(){
   return {
