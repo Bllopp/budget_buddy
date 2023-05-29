@@ -6,8 +6,8 @@
   </template>
   
   <script>
-  import { Chart, ArcElement, DoughnutController, Legend, Tooltip, Colors} from 'chart.js';
-  Chart.register(DoughnutController, ArcElement,Legend, Tooltip, Colors);
+  import { Chart, ArcElement, DoughnutController, Legend, Tooltip} from 'chart.js';
+  Chart.register(DoughnutController, ArcElement,Legend, Tooltip);
   
   export default {
     name: "doughnut-chart",
@@ -27,7 +27,6 @@
         required: true,
         default: [10, 20, 30, 40, 50]
       },
-      backgroundColor : Array
     },
     mounted() {
       console.log("My doughnut chart is mounted");
@@ -47,7 +46,6 @@
             {
               label: this.topLabel,
               data: this.dataChart,
-              backgroundColor,
             }
           ]
         },

@@ -1,6 +1,6 @@
 <template>
-    <Header />
     <MyHistoric />
+    <button @click="tab = 'ScanReceipt'">Scan receipt</button>
 </template>
 
 <script>
