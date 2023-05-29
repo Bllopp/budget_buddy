@@ -1,12 +1,12 @@
 <template>
   <div>
-    <form action="submit" class="container-connexion">
+    <form  class="container-connexion">
       <h1>Create an account</h1>
       <div v-for="(input, key) in input_field" :key="key">
         <label :for="key">{{ input.label }}</label><br />
-        <input :type="input.type" :placeholder="input.placeholder" :pattern="input.pattern" required />
+        <input :type="input.type" :placeholder="input.placeholder" />
       </div>
-      <button class="button">Valider</button>
+      <button class="button" @click="emit_">Valider</button>
     </form>
   </div>
 </template>
@@ -49,9 +49,15 @@ export default {
   data() {
     return {
       input_field,
+      tab: "registerView"
     };
   },
-};
+  methods: {
+   emit_() {
+      this.$emit("navigateToLogin");
+    },
+}
+}
 </script>
     <style>
     @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');

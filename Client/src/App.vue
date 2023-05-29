@@ -1,14 +1,7 @@
 <!-- eslint-disable vue/valid-v-for -->
 <template>
   <div>
-  <nav class="nav">
-    <button class="nav" @click = "tab='HomeView'"><p>Home</p></button>
-    <button class="nav" @click = "tab='LoginView'"><p>login</p></button>
-    <button class="nav" @click = "tab='myBudgetView'"><p>budget</p></button>
-    <button class="nav" @click = "tab='registerView'"><p>register</p></button>
-  </nav>
   <component :is = "tab"/>
-  <Add_receipt  @click = "tab='New_receipt'"/>
   </div>
 
 </template>
@@ -35,8 +28,13 @@ export default {
 },
 data(){
   return {
-    tab : "HomeView"
+    tab : "registerView"
   }
+},
+mounted(){
+  this.$on('navigateToLogin', () => {
+    return this.tab = "LoginView";
+  })
 }
 }
 </script>
