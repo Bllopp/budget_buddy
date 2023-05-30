@@ -28,26 +28,25 @@ export default {
 },
 data(){
   return {
-    tab : "registerView"
+    tab : "myBudgetView"
   }
 },
-mounted(){
-  this.$on('navigateToLogin', () => {
-    return this.tab = "LoginView";
-  })
-}
+updated(){}
 }
 </script>
 
 <style>
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  /* margin-top: 60px; */
-  padding : 0;
+  background-image: linear-gradient(to right top, #054899, #894696, #c64c7e, #e36b5e, #e29849);  align-items: center;
+  flex-direction: column;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin : 0px;
+  padding : 0px;
 }
 .logo{
   width: 20%;

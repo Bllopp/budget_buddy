@@ -59,23 +59,11 @@ export default {
 }
 }
 </script>
-    <style>
+    <style scoped>
     @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
    
-    *{
-  margin: 0;
-  padding: 0;
-}
+  
 
-body{
-  background-image: linear-gradient(to right top, #054899, #894696, #c64c7e, #e36b5e, #e29849);  align-items: center;
-  flex-direction: column;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  height: 100vh;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
 
 h1, ::placeholder, label,p{
   color: #f4f4f4;
