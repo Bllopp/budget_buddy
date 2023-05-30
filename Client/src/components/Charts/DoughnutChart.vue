@@ -1,13 +1,14 @@
 <template>
     <div>
-      <canvas id="myChart" width="500px" height="500px"></canvas>
-      <p>Here is my chart <h1>{{ topLabel }}</h1></p>
+      <canvas id="myChart" width="100" height="100"></canvas>
+      <h4>{{ topLabel }}</h4>
     </div>
   </template>
   
   <script>
   import { Chart, ArcElement, DoughnutController, Legend, Tooltip} from 'chart.js';
-  Chart.register(DoughnutController, ArcElement,Legend, Tooltip);
+import { registerables } from 'chart.js';
+  Chart.register(DoughnutController, ArcElement,Legend, Tooltip, ...registerables);
   
   export default {
     name: "doughnut-chart",
@@ -15,17 +16,17 @@
       ValuesLabel: {
         type: Array,
         required: true,
-        default: ["value1", "value2", "value3", "value4", "value5"]
+        
       },
       topLabel: {
         type: String,
         required: true,
-        default: "Here is my chart"
+        
       },
       dataChart: {
         type: Array,
         required: true,
-        default: [10, 20, 30, 40, 50]
+        
       },
     },
     mounted() {
