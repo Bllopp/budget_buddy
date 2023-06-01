@@ -1,35 +1,18 @@
 <template>
-    <div id="chart">
-      <h1>My Budget</h1>
-      <doughnut-chart
-        :ValuesLabel="labels"
-        :topLabel="title"
-        :dataChart="dataChart"
-      />
-    </div>
-  </template>
+    
+</template>
   
   <script>
-import DoughnutChart from "../components/Charts/DoughnutChart.vue";
- 
-  export default {
-    components: {
-      DoughnutChart
-    },
-    name: "myBudgetView",
-  prop : {
-    categoryName: String
-  }
-    // Data section
-    ,data() {
-      return {
-        labels: ['fruits', 'veggies', 'meat', 'dairy', 'snacks'],
-        title : "my Grocery expenses",
-        dataChart : [1,2,3,4,5],
-      };
-    },
-  };
-  </script>
+
+
+
+
+
+//export
+
+//import 
+  
+</script>
 
 <style scoped>
 #chart{

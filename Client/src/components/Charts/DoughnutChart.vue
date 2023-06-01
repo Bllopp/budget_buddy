@@ -1,62 +1,60 @@
 <template>
-    <div>
-      <canvas :id=ChartID width="100" height="100"></canvas>
-      <h4>{{ topLabel }}</h4>
-    </div>
-  </template>
+  <div id="chart" width=''></div>    
+</template>
   
   <script>
-  import { Chart, ArcElement, DoughnutController, Legend, Tooltip} from 'chart.js';
-import { registerables } from 'chart.js';
-  Chart.register(DoughnutController, ArcElement,Legend, Tooltip, ...registerables);
-  
-  export default {
-    name: "doughnut-chart",
-    props: {
-      ValuesLabel: {
-        type: Array,
-        required: true,
-        
-      },
-      topLabel: {
-        type: String,
-        required: true,
-        
-      },
-      dataChart: {
-        type: Array,
-        required: true,
-        
-      },
-      ChartID : String
-    },
-    mounted() {
-      console.log("My doughnut chart is mounted");
-      const options = {
-  plugins: {
-    colors: {
-      enabled: true
-    }
-  }
-};
-    const ChartID = this.ChartID;
-    console.log(ChartID)
-      const ctx = document.getElementById(this.ChartID).getContext('2d');
-      const myChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          labels: this.ValuesLabel,
-          datasets: [
-            {
-              label: this.topLabel,
-              data: this.dataChart,
-            }
-          ]
-        },
-        options : options
-      });
-      return myChart;
-    }
-  };
-  </script>
-  
+// variables
+  // set the dimensions and margins of the graph
+var width = 450
+    height = 450
+    margin = 40
+
+  // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
+var radius = Math.min(width, height) / 2- margin
+
+// append the svg object to the div called 'chart'
+var svg = d3.select("#chart")
+  .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+// Create dummy data
+var data = {a: 9, b: 20, c:30, d:8, e:12, f:14}
+
+// set the color scale
+var color = d3.scaleOrdinal()
+  .domain(data)
+  .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56"])
+
+// Compute the position of each group on the pie:
+var pie = d3.pie()
+  .value(function(d) {return d.value; })
+var data_ready = pie(d3.entries(data))
+
+// Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+svg
+  .selectAll('whatever')
+  .data(data_ready)
+  .enter()
+  .append('path')
+  .attr('d', d3.arc()
+    .innerRadius(100)         // This is the size of the donut hole
+    .outerRadius(radius)
+  )
+  .attr('fill', function(d){ return(color(d.data.key)) })
+  .attr("stroke", "black")
+  .style("stroke-width", "2px")
+  .style("opacity", 0.7)
+
+
+
+
+//export
+export default{
+  name :"DoughnutChart",
+}
+//import 
+  import * as d3 from 'd3';
+</script>
