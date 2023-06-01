@@ -1,5 +1,5 @@
 <template>
-    
+    <DoughnutChart></DoughnutChart>
 </template>
   
   <script>
@@ -11,7 +11,14 @@
 //export
 
 //import 
-  
+  import DoughnutChart from '@/components/Charts/DoughnutChart/DoughnutChart.vue';
+  export default {
+    name: 'myBudgetView',
+    components: {
+      DoughnutChart
+    },
+    
+  }
 </script>
 
 <style scoped>
