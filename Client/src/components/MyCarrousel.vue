@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="drag">
-      <li v-for="event in events" :key="event.id" class="click">
+      <li v-for="event in events" :key="event.id" class="click" @click="selected_category=events.id">
         {{ event.name }}
       </li>
     </ul>
@@ -13,7 +13,7 @@ export default {
   name: "MyCarrousel",
   data() {
     return {
-      events: [],
+      events: []
     };
   },
   async mounted() {

@@ -1,14 +1,21 @@
 <template>
-    <MyHistoric />
-    <button @click="tab = 'ScanReceipt'">Scan receipt</button>
+    <body>
+        <MyCarrouselVue  />
+        <MyHistoric />
+      
+    </body>
+
 </template>
 
 <script>
+
 import MyHistoric from '@/components/MyHistoric.vue';
+import MyCarrouselVue from '../components/MyCarrousel.vue';
     export default {
         name : "HomeView",
         components: {
             MyHistoric,
+            MyCarrouselVue
         }
     }
 </script>
