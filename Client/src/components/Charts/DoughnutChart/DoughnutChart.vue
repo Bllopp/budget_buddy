@@ -1,36 +1,37 @@
 <template>
-  <div id="chart">
-    {{ PieChart()  }}
-  </div>
+  
+    {{ build() }}
+  
 </template>
 
 <script>
-const data = [{
-    name : "toto",
-    value: 10
-  },
-  {
-    name : "tato",
-    value: 10
-  },
-  {
-    name : "tota",
-    value: 10
-  }];
-  PieChart( data, {
-  name: d => d.name,
-  value: d => Math.round(100*d.value/30),
-  width: 400,
-  height: 400
-  })
-export default  {
+import PieChart from './index.js';
+
+export default {
   name: 'DoughnutChart',
-  methods : {
-    PieChart,
+  props: {
+    params: {
+      type: Object,
+      required: true
+    },
+    data: {
+      type: Array,
+      required: true
+    },
+    ID: {
+      type: String,
+      required: true
+    }
+  },
+  methods: {
+    build() {
+      return  PieChart(this.data, this.params);
+    }
+  },
+  mounted() {
+    const chartContainer = document.getElementById(this.ID);
+    const svgElement = PieChart(this.data, this.params);
+    chartContainer.appendChild(svgElement);
   }
 }
-
-
-
-import PieChart from './index.js';
 </script>
