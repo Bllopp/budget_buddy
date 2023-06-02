@@ -17,9 +17,11 @@ import DoughnutChart from "../components/Charts/DoughnutChart.vue";
       DoughnutChart
     },
     name: "myBudgetView",
-  
+  prop : {
+    categoryName: String
+  }
     // Data section
-    data() {
+    ,data() {
       return {
         labels: ['fruits', 'veggies', 'meat', 'dairy', 'snacks'],
         title : "my Grocery expenses",

@@ -9,7 +9,8 @@
     <button class="nav" @click = "tab='myBudgetView'"><p>budget</p></button>
     <button class="nav" @click = "tab='registerView'"><p>register</p></button>
   </nav> -->
-  <component :is = "tab"/>
+  <component :is="tab" @change_category="change_category"></component>
+
   <Add_receipt  @click = "tab='NewReceiptView'"/>
   </div>
 
@@ -38,9 +39,19 @@ export default {
     MyHeader,
     NewReceiptView,
 },
+created() {
+  this.emitter.on('change_category',this.change_category)
+},
+methods: {
+  change_category(selected_category) {
+    console.log(selected_category);
+  }
+},
 data(){
   return {
-    tab : "myBudgetView"
+    tab : "HomeView",
+    selected_category: ''
+    
   }
 },
 updated(){}
@@ -53,9 +64,9 @@ updated(){}
   background-image: linear-gradient(to right top, #054899, #894696, #c64c7e, #e36b5e, #e29849);  align-items: center;
   flex-direction: column;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  height: 100vh;
+  height: 100%;
   align-items: center;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   margin : 0px;
   padding : 0px;

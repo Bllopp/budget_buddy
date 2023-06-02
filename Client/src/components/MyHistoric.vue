@@ -1,10 +1,11 @@
 <template>
   <div id="historic">
-    <h2>Your historic</h2>
+    <h2 id="Historic_title">Your historic</h2>
     <div v-for="event in events" :key="event.id">
     <Historic_item :data=event />
+    <Historic_item :data=event />
     </div>
-    <div id="buton"><router-link to="/" >+</router-link></div>
+  
   </div>
 </template>
 
@@ -19,7 +20,24 @@ data() {
         events: []
     }
 },
-async mounted() {
+methods : {
+   topTitleListener () {
+    window.addEventListener('scroll', function(){
+      var title = document.querySelector('#Historic_title');
+      var titlePosition = title.getBoundingClientRect().top;
+      if (titlePosition <= 0) {
+        title.classList.add('scrolled');
+      } else {
+        title.classList.remove('scrolled');
+  }
+    })
+  }
+},
+created () {
+    this.topTitleListener()
+}
+,async mounted() {
+
     const res = await fetch('http://localhost:8000/events');
     const data = await res.json();
     this.events = data;
@@ -33,6 +51,21 @@ components: {
 </script>
 
 <style>
+
+#Historic_title{
+  color: white;
+  position: sticky;
+  top: 0; 
+  transition: background-color 0.5s;
+}
+
+#Historic_title.scrolled{
+  background-color: #EF7F7F;
+  transition: background-color 0.5s;
+}
+
+
+
 #buton {
 
   position: sticky;
