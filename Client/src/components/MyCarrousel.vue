@@ -3,18 +3,25 @@
     <ul class="drag">
       <li v-for="event in events" :key="event.id" class="click" @click="selected_category=event.id" >
         {{ event.name }}
+        <DoughnutChart  :ChartID="chartID_name + event.id" />
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import DoughnutChart from './Charts/DoughnutChart.vue';
+
 export default {
   name: "MyCarrousel",
+  components :{
+    DoughnutChart,
+  },
   data() {
     return {
       events: [],
-      selected_category: 'test'
+      selected_category: 'test',
+      chartID_name: 'Chart_'
     };
   },
   watch: {
@@ -37,7 +44,7 @@ export default {
 <style>
 
 .click{
-  padding: 10px 30px 200px 30px;
+  /* padding: 10px 30px 200px 30px; */
   border: solid 1px rgb(252, 252, 252);
   background-color: rgba(0, 0, 0, 0.20);
   border-radius: 5px;
@@ -46,6 +53,14 @@ export default {
   flex : 0 0 auto;
   text-align: center;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+
+  background-color: white;
+  border-radius: 10px;
+  /* padding: 20px; */
+  margin: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  /* width: 75%; */
+  /* height: 75%; */
   
 }
 

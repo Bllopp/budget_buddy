@@ -42,16 +42,18 @@ export default {
 created() {
   this.emitter.on('change_category',this.change_category)
 },
-methods: {
-  change_category(selected_category) {
-    console.log(selected_category);
-  }
-},
+
 data(){
   return {
     tab : "HomeView",
     selected_category: ''
     
+  }
+},
+methods: {
+  change_category(selected_category) {
+    console.log(selected_category);
+    this.tab = "myBudgetView"
   }
 },
 updated(){}
