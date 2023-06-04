@@ -3,14 +3,14 @@
     <ul class="drag">
       <li v-for="event in events" :key="event.id" class="click" @click="selected_category=event.id" >
         {{ event.name }}
-        <DoughnutChart  :ChartID="chartID_name + event.id" />
+        <DoughnutChart :ID="chartID_name + event.id" :data="chart1.dataChart" :params="paramsChart" />
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import DoughnutChart from './Charts/DoughnutChart.vue';
+import DoughnutChart from './Charts/DoughnutChart/DoughnutChart.vue';
 
 export default {
   name: "MyCarrousel",
@@ -19,9 +19,23 @@ export default {
   },
   data() {
     return {
+      paramsChart: {
+      name: (d) => d.name,
+      value: (d) => Math.round((100 * d.value) / 30),
+      width: 200,
+      height: 200
+    },
+    chart1:{
+      id_: 'chart1',
+    dataChart: [
+      { name: 'toto', value: 10 },
+      
+      { name: 'tuta', value: 5 }
+    ]},
       events: [],
       selected_category: 'test',
-      chartID_name: 'Chart_'
+      chartID_name: 'Chart_'  
+      
     };
   },
   watch: {
