@@ -1,19 +1,21 @@
 <template>
   
   <DoughnutChart :params="paramsChart" :data="chart1.dataChart" :ID="chart1.id_"/>
-
-
   <DoughnutChart :params="paramsChart" :data="chart2.dataChart" :ID="chart2.id_"/>
+  <BarChart :params="params" :data="chart3.dataChart" :ID="chart3.id_"/>
+
 
 </template>
 
 <script>
 import DoughnutChart from '@/components/Charts/DoughnutChart/DoughnutChart.vue';
+import BarChart from '@/components/Charts/BarChart/BarChart.vue';
 
 export default {
 name: 'myBudgetView',
 components: {
   DoughnutChart,
+  BarChart
 },
 data() {
   return {
@@ -22,6 +24,12 @@ data() {
       value: (d) => Math.round((100 * d.value) / 30),
       width: 200,
       height: 200
+    },
+    params:{
+      width : 200,
+      height : 200,
+      margin : 20,
+      padding : 0.1,
     },
     chart1:{
       id_: 'chart1',
