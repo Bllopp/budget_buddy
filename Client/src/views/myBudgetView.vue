@@ -1,24 +1,20 @@
 <template>
   
-  <div :id="chart1.id_">
     <DoughnutChart :params="paramsChart" :data="chart1.dataChart" :ID="chart1.id_"/>
-  </div>
-  <div :id="chart2.id_">
-    <DoughnutChart :params="paramsChart" :data="chart2.dataChart" :ID="chart2.id_"/>
-  </div>
-
-
   
+
+    <DoughnutChart :params="paramsChart" :data="chart2.dataChart" :ID="chart2.id_"/>
   
 </template>
 
 <script>
 import DoughnutChart from '@/components/Charts/DoughnutChart/DoughnutChart.vue';
-
+import BarChart from '@/components/Charts/BarChart/BarChart.vue';
 export default {
   name: 'myBudgetView',
   components: {
-    DoughnutChart
+    DoughnutChart,
+    BarChart
   },
   data() {
     return {
@@ -39,6 +35,15 @@ export default {
       ]},
       chart2:{
         id_: 'chart2',
+      dataChart: [
+        { name: 'toto', value: 5 },
+        { name: 'tato', value: 10 },
+        { name: 'tota', value: 12 },
+        { name: 'tita', value: 10 },
+        { name: 'tuta', value: 10 }
+      ]},
+      chart3:{
+        id_: 'chart3',
       dataChart: [
         { name: 'toto', value: 5 },
         { name: 'tato', value: 10 },
@@ -73,5 +78,7 @@ div {
   background-color: white;
   border-radius: 10px;
   padding: 20px;
+  width : 200px;
+  height : 200px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);}
 </style>

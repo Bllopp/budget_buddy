@@ -48,13 +48,16 @@ function PieChart(data, {
     const arc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
     const arcLabel = d3.arc().innerRadius(labelRadius).outerRadius(labelRadius);
     
+
+    
     const svg = d3.create("div").attr("class", "div-doughnut-chart")
         .append("svg")
         .attr("width", width)
         .attr("height", height)
         .attr("viewBox", `${-width / 2} ${-height / 2} ${width} ${height}`)
         .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
-  
+
+      
     svg.append("g")
         .attr("stroke", stroke)
         .attr("stroke-width", strokeWidth)
@@ -85,6 +88,8 @@ function PieChart(data, {
         .attr("y", (_, i) => `${i * 1.1}em`)
         .attr("font-weight", (_, i) => i ? null : "bold")
         .text(d => d);
+        const conteneur = d3.select("div-doughnut-chart");
+        console.log(conteneur);
   
     return Object.assign(svg.node(), {scales: {color}});
   }
