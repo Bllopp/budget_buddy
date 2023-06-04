@@ -1,8 +1,4 @@
-<template>
-  
-    {{ build() }}
-  
-</template>
+<template><div :id="ID"></div></template>
 
 <script>
 import PieChart from './index.js';
