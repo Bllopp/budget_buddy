@@ -45,7 +45,7 @@ created() {
 
 data(){
   return {
-    tab : "myBudgetView",
+    tab : "HomeView",
     selected_category: ''
     
   }
