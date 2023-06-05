@@ -1,19 +1,21 @@
 <template>
   
   <DoughnutChart :params="paramsChart" :data="chart1.dataChart" :ID="chart1.id_"/>
-
-
   <DoughnutChart :params="paramsChart" :data="chart2.dataChart" :ID="chart2.id_"/>
+  <BarChart :params="params" :data="chart3.dataChart" :ID="chart3.id_"/>
+
 
 </template>
 
 <script>
 import DoughnutChart from '@/components/Charts/DoughnutChart/DoughnutChart.vue';
+import BarChart from '@/components/Charts/BarChart/BarChart.vue';
 
 export default {
 name: 'myBudgetView',
 components: {
   DoughnutChart,
+  BarChart
 },
 data() {
   return {
@@ -23,14 +25,20 @@ data() {
       width: 200,
       height: 200
     },
+    params:{
+      width : 200,
+      height : 200,
+      margin : 20,
+      padding : 0.1,
+    },
     chart1:{
       id_: 'chart1',
     dataChart: [
       { name: 'toto', value: 10 },
-      { name: 'tato', value: 10 },
-      { name: 'tota', value: 10 },
-      { name: 'tita', value: 10 },
-      { name: 'tuta', value: 10 }
+      { name: 'tuta', value: 12 },
+      { name: 'tata', value: 18 },
+      { name: 'tita', value: 8 },
+      { name: 'titi', value: 16 }
     ]},
     chart2:{
       id_: 'chart2',
@@ -46,7 +54,24 @@ data() {
     dataChart: [
       { name: 'toto', value: 5 },
       { name: 'tato', value: 10 },
+      { name: 'tuta', value: 12 },
       { name: 'tota', value: 12 },
+      { name: 'tota', value: 18 },
+      { name: 'tuta', value: 12 },
+      { name: 'toto', value: 5 },
+      { name: 'tato', value: 10 },
+      { name: 'tuta', value: 12 },
+      { name: 'tota', value: 12 },
+      { name: 'tota', value: 18 },
+      { name: 'tuta', value: 12 },
+      { name: 'tita', value: 10 },
+      { name: 'toto', value: 5 },
+      { name: 'tato', value: 10 },
+      { name: 'tuta', value: 12 },
+      { name: 'tota', value: 12 },
+      { name: 'tota', value: 18 },
+      { name: 'tuta', value: 12 },
+      { name: 'tita', value: 10 },
       { name: 'tita', value: 10 },
       { name: 'tuta', value: 10 }
     ]}

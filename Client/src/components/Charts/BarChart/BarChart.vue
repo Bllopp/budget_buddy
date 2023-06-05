@@ -1,10 +1,10 @@
 <template><div :id="ID"></div></template>
 
 <script>
-import PieChart from './index.js';
+import BarChart from './index.js';
 
 export default {
-  name: 'DoughnutChart',
+  name: 'BarChart',
   props: {
     params: {
       type: Object,
@@ -19,9 +19,9 @@ export default {
       required: true
     }
   },
-    mounted() {
+   mounted() {
     const chartContainer = document.getElementById(this.ID);
-    const svgElement = PieChart(this.data, this.params);
+    const svgElement = BarChart(this.data, this.params);
     chartContainer.appendChild(svgElement);
   }
 }
