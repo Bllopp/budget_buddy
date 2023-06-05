@@ -1,4 +1,4 @@
-dataToArray :(data, search) =>{
+function dataToArray (data, search) {
     const values = [];
     data.forEach(obj => {
       Object.entries(obj).forEach(([key, value]) => {
@@ -13,4 +13,4 @@ dataToArray :(data, search) =>{
     else return values;
   }
 
-module.exports = dataToArray;
+export {dataToArray};
