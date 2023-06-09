@@ -1,5 +1,5 @@
 <template>
-    <body>
+    <body id="test">
         <MyCarrouselVue  />
         <MyHistoric />
       
@@ -19,3 +19,4 @@ import MyCarrouselVue from '../components/MyCarrousel.vue';
         }
     }
 </script>
+

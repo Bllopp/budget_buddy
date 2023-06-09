@@ -1,5 +1,5 @@
 <template>
-  <body>
+
 
   <div id='bg' style="">
      <h2 id="title">{{ title }}</h2>
@@ -18,7 +18,7 @@
   <!-- </div> -->
    
 
-  </body>
+ 
 </template>
 
 <script>
