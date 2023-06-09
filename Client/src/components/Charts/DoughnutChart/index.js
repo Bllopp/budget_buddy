@@ -28,7 +28,7 @@ function PieChart(data, {
   // Chose a default color scheme based on cardinality.
   const colorScale = d3.scaleLinear().domain([0, names.size - 1]).range([0, 1]);
   const colors = Array.from({ length: names.size }, (_, i) =>
-    d3.interpolateSpectral(colorScale(i))
+    d3.interpolateRainbow(colorScale(i))
   );
 
   // Construct scales.
