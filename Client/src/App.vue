@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/valid-v-for -->
 
 <template>
-  <div>
+  <div id="body">
     <MyHeader title="Budget Buddy" />
   <!-- <nav class="nav">
     <button class="nav" @click = "tab='HomeView'"><p>Home</p></button>
@@ -80,10 +80,15 @@ updated(){}
 .carrousel{
   height: 250px
 }
+/* 
+#body{
+  position: fixed;
+} */
 
 body{
   margin: 0;
   height: 100%;
+
 }
 .nav{
   height: 80px;

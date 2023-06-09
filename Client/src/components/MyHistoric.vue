@@ -16,25 +16,32 @@ import Historic_item from './Historic_item.vue';
 export default {
 name: "MyHistoric",
 data() {
-    return {
-        events: []
-    }
-},
-methods : {
-   topTitleListener () {
-    window.addEventListener('scroll', function(){
+  var eventHandler = function() {
       var title = document.querySelector('#Historic_title');
       var titlePosition = title.getBoundingClientRect().top;
       if (titlePosition <= 0) {
         title.classList.add('scrolled');
       } else {
         title.classList.remove('scrolled');
-  }
-    })
+        }
+    }
+    return {
+        events: [],
+        eventHandler
+        
+    }
+},
+methods : {
+  
+   topTitleListener () {
+    window.addEventListener('scroll', this.eventHandler )
   }
 },
 created () {
     this.topTitleListener()
+},
+unmounted(){
+  window.removeEventListener('scroll', this.eventHandler)
 }
 ,async mounted() {
 
