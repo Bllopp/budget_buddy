@@ -19,7 +19,6 @@
 <script>
 import Add_receipt from './components/Add_receipt.vue';
 import MyHeader from './components/MyHeader.vue';
-// import HelloWorld from './components/HelloWorld.vue'
 import HomeView from './views/HomeView.vue';
 import LoginView from './views/loginView.vue';
 import myBudgetView from './views/myBudgetView';
