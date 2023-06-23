@@ -1,4 +1,5 @@
 <template>
+  <MyHeader  back=true />
   
   <DoughnutChart :params="paramsChart" :data="chart1.dataChart" :ID="chart1.id_"/>
   <DoughnutChart :params="paramsChart" :data="chart2.dataChart" :ID="chart2.id_"/>
@@ -8,6 +9,7 @@
 </template>
 
 <script>
+import MyHeader from '@/components/MyHeader.vue';
 import DoughnutChart from '@/components/Charts/DoughnutChart/DoughnutChart.vue';
 import BarChart from '@/components/Charts/BarChart/BarChart.vue';
 
@@ -15,7 +17,8 @@ export default {
 name: 'myBudgetView',
 components: {
   DoughnutChart,
-  BarChart
+  BarChart,
+  MyHeader
 },
 data() {
   return {

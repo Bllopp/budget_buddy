@@ -1,6 +1,7 @@
 
 <template>
   <body>
+    <MyHeader back=true  />
      <video id="video">salut</video>
      <button id="startbutton">take a photo</button>
      <canvas id ='canvas'></canvas>
@@ -9,7 +10,14 @@
 </template>
 
 <script>
+
+import MyHeader from '@/components/MyHeader.vue';
+
 export default {
+
+  components:{
+    MyHeader
+  },
     data() {
         return {
 

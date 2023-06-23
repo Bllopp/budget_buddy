@@ -2,7 +2,10 @@
 
 
   <div id='bg' style="">
-     <h2 id="title">{{ title }}</h2>
+    
+     
+  <h1 class="back_button" v-if='back' @click="onGoBack">◄</h1>   
+  <h2 v-else="back" id="title">{{ title }}</h2>
     
   </div>
   <!-- <div > -->
@@ -22,16 +25,28 @@
 </template>
 
 <script>
+
 export default {
 name : 'MyHeader',
 props : {
-    title : String
+    title : String,
+    back : {
+      default : false,
+      type : Boolean
+    }
+},
+methods: {
+  onGoBack() {
+    console.log(this.emitter)
+    this.emitter.emit('go-back')
+    console.log("go-back")
 },
 data() {
   return {
     tab : "Home"
   }
 }
+},
 }
 </script>
 
@@ -47,6 +62,7 @@ body{
     margin: 0;
     background-color:#EF7F7F;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
     
 
  }
@@ -56,10 +72,13 @@ body{
   text-align: left;
   padding: 10% 0 10px 10px;
   font-size: 19px;
+}
+
+.back_button{
+  color: white;
+  padding: 0% 0 0px 10px;
+  /* position: left; */
+  font-size: 30px;
   
-
-
-
-
 }
 </style>
