@@ -1,5 +1,6 @@
 <template>
     <body id="test">
+        <MyHeader title="Budget Buddy" />
         <MyCarrouselVue  />
         <MyHistoric />
       
@@ -8,14 +9,15 @@
 </template>
 
 <script>
-
+import MyHeader from '@/components/MyHeader.vue';
 import MyHistoric from '@/components/MyHistoric.vue';
 import MyCarrouselVue from '../components/MyCarrousel.vue';
     export default {
         name : "HomeView",
         components: {
             MyHistoric,
-            MyCarrouselVue
+            MyCarrouselVue,
+            MyHeader
         }
     }
 </script>

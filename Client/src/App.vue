@@ -2,7 +2,7 @@
 
 <template>
   <div id="body">
-    <MyHeader title="Budget Buddy" />
+    
   <!-- <nav class="nav">
     <button class="nav" @click = "tab='HomeView'"><p>Home</p></button>
     <button class="nav" @click = "tab='LoginView'"><p>login</p></button>
@@ -11,7 +11,7 @@
   </nav> -->
   <component :is="tab" @change_category="change_category"></component>
 
-  <Add_receipt  @click = "tab='NewReceiptView'"/>
+  <Add_receipt  @click = "changeView('NewReceiptView')"/>
   </div>
 
 </template>
@@ -41,21 +41,32 @@ export default {
 },
 created() {
   this.emitter.on('change_category',this.change_category)
+  this.emitter.on('go-back', this.goBack);
 },
 
-data(){
-  return {
-    tab : "HomeView",
-    selected_category: ''
-    
-  }
-},
-methods: {
-  change_category(selected_category) {
-    console.log(selected_category);
-    this.tab = "myBudgetView"
-  }
-},
+data() {
+    return {
+      tab: 'HomeView',
+      selected_category: '',
+      history: []
+    };
+  },
+  methods: {
+    change_category(selected_category) {
+      console.log(selected_category);
+      this.changeView('myBudgetView');
+    },
+    changeView(newView) {
+      this.history.push(this.tab);
+      this.tab = newView;
+    },
+    goBack() {
+      console.log(this.history);
+      if (this.history.length > 0) {
+        this.tab = this.history.pop();
+      }
+    }
+  },
 updated(){}
 }
 </script>
