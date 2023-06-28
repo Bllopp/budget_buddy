@@ -26,6 +26,7 @@ import registerView from './views/registerView.vue';
 import NewReceiptView from './views/NewReceipt.vue';
 
 
+
 export default {
   name: 'App',
   components: {
@@ -38,16 +39,23 @@ export default {
     MyHeader,
     NewReceiptView,
 },
-created() {
+async created() {
   this.emitter.on('change_category',this.change_category)
   this.emitter.on('go-back', this.goBack);
+  // let res = await fetch('http://localhost:8000/expenses');
+  // const data = await res.json();
+  // console.log(data);
+  
+
 },
+
 
 data() {
     return {
       tab: 'HomeView',
       selected_category: '',
-      history: []
+      history: [],
+      expenses: {}
     };
   },
   methods: {

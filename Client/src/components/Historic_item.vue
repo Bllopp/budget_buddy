@@ -1,18 +1,13 @@
 <template>
   <div class='historic_item'>
 
-    <p>{{ data.description }}</p>
+    <p>{{ data.location }} {{ data.date }}</p>
     <table>
       <tbody>
-        <tr>
-          <td>x2</td>
-          <td>test</td>
-          <td>20€</td>
-        </tr>
-        <tr>
-          <td>x1</td>
-          <td>tes 2</td>
-          <td>10€</td>
+        <tr v-for="item in items" :key="item.id">
+          <td>{{ item.quantity || 'x1' }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.price }}€</td>
         </tr>
       </tbody>
     </table>
@@ -21,11 +16,27 @@
 </template>
 
 <script>
+
+import EventService from '@/services/EventService';
+
 export default {
 name: 'Historic_item',
 props: {
     data : Object
 },
+data(){
+  return {
+    items : {}
+}
+}, 
+async created(){
+  EventService.getItem(this.data.id).then( res => {
+    this.items = res,
+    console.log(this.items)
+  }
+
+  )
+}
 }
 </script>
 

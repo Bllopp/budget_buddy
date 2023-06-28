@@ -1,9 +1,9 @@
 <template>
   <div id="historic">
     <h2 id="Historic_title">Your historic</h2>
-    <div v-for="event in events" :key="event.id">
-    <Historic_item :data=event />
-    <Historic_item :data=event />
+    <div v-for="expense in expenses" :key="expense.id">
+    <Historic_item :data=expense />
+
     </div>
   
   </div>
@@ -12,6 +12,7 @@
 <script>
 
 import Historic_item from './Historic_item.vue';
+import EventService from '@/services/EventService';
 
 export default {
 name: "MyHistoric",
@@ -27,7 +28,8 @@ data() {
     }
     return {
         events: [],
-        eventHandler
+        eventHandler,
+        expenses: {}
         
     }
 },
@@ -37,8 +39,17 @@ methods : {
     window.addEventListener('scroll', this.eventHandler )
   }
 },
-created () {
+async created () {
     this.topTitleListener()
+    
+  EventService.getExpenses()
+    .then(response => {
+      this.expenses = response
+      console.log(this.expenses)
+    })
+    .catch(error => {
+      console.log(error)
+    })
 },
 unmounted(){
   window.removeEventListener('scroll', this.eventHandler)

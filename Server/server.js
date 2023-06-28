@@ -8,6 +8,16 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'yourpassword',
+  database: 'sys'
+});
+
+connection.connect();
+
 let events = 
 [
   {
@@ -54,6 +64,13 @@ let events =
   
 ];
 
+app.get('/expenses', (req, res) => {
+  connection.query('SELECT * FROM expenses', (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
 app.get('/', (req, res) => {
   res.send(`Hi! Server is listening on port ${port}`)
 });
@@ -61,6 +78,37 @@ app.get('/', (req, res) => {
 app.get('/events', (req,res) => {
     res.send(events);
 })
+
+app.get('/items/:expense_id', (req, res) => {
+  let expense_id = Number(req.params.expense_id)
+  connection.query(
+    'SELECT items.name, items.price from items WHERE expense_id = ?',
+    [expense_id],
+    (err, results) => {
+      if (err) {
+        console.error(err)
+      } else {
+        res.json(results)
+      }
+    }
+  )
+})
+
+app.get('/categories', (req,res) => {
+  // let period = String(req.params.period)
+  connection.query(
+    'SELECT categories.name, SUM(items.price) FROM items JOIN expenses ON expenses.id=items.expense_id JOIN categories ON categories.id=items.category_id GROUP BY categories.name', (err, results) => {
+      if (err) {
+        console.error(err)
+      } else {
+        res.json(results)
+      }
+    }
+
+
+  )
+})
+
 
 app.get('/events/:id', (req, res) => {
     const id = Number(req.params.id);
