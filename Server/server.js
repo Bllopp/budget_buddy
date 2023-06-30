@@ -66,7 +66,7 @@ let events =
 ];
 
 app.get('/expenses', (req, res) => {
-  connection.query('SELECT * FROM expenses', (err, results) => {
+  connection.query('SELECT e.id, e.location, e.date, SUM(i.price) AS total_price FROM expenses e JOIN items i ON e.id = i.expense_id GROUP BY e.id;', (err, results) => {
     if (err) throw err;
     res.json(results);
   });
@@ -83,7 +83,7 @@ app.get('/events', (req,res) => {
 app.get('/items/:expense_id', (req, res) => {
   let expense_id = Number(req.params.expense_id)
   connection.query(
-    'SELECT items.name, items.price from items WHERE expense_id = ?',
+    'SELECT items.name, items.price, items.quantity from items WHERE expense_id = ?',
     [expense_id],
     (err, results) => {
       if (err) {
