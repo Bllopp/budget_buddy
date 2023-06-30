@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const port = 8000;
-const env = require()
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -66,7 +65,7 @@ let events =
 ];
 
 app.get('/expenses', (req, res) => {
-  connection.query('SELECT * FROM expenses', (err, results) => {
+  connection.query('SELECT e.id, e.location, e.date, SUM(i.price) AS total_price FROM expenses e JOIN items i ON e.id = i.expense_id GROUP BY e.id;', (err, results) => {
     if (err) throw err;
     res.json(results);
   });
