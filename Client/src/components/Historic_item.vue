@@ -39,8 +39,10 @@ data(){
 }
 }, 
 async created(){
+  console.log('items')
   EventService.getItem(this.data.id).then( res => {
     this.items = res,
+   
     console.log(this.items)
     
     
@@ -53,14 +55,13 @@ mounted(){
   month: '2-digit',
   day: '2-digit'
 })
-  console.log(this.formated_date)
 }
 }
 </script>
 
 <style>
     .historic_item{
-        background-color: rgba(91, 187, 204, 0.761);
+        background: linear-gradient(to right, #DAD3FC, #BED8FD);
         border: solid black 1x ;
         border-radius: 5pt;
         width: 90%;
@@ -89,7 +90,7 @@ td, th {
   border-bottom: 1px solid white;
   padding: 8px;
   text-align: left;
-  color: white;
+  color: black ;
 }
 td:nth-child(2) {
   width: 100%;
