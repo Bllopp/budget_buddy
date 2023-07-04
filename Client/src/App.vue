@@ -11,7 +11,8 @@
   </nav> -->
   <component :is="tab" @change_category="change_category"></component>
 
-  <Add_receipt  @click = "changeView('NewReceiptView')"/>
+  
+  <Add_receipt v-if="tab != 'NewReceiptView'"  @click = "changeView('NewReceiptView')"/>
   </div>
 
 </template>
@@ -81,9 +82,9 @@ updated(){}
 <style>
 
 #app {
-  background-image: linear-gradient(to right top, #054899, #894696, #c64c7e, #e36b5e, #e29849);  align-items: center;
+  /* background-image: linear-gradient(to right top, #054899, #894696, #c64c7e, #e36b5e, #e29849);  align-items: center; */
   flex-direction: column;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family:   'Lucida Grande', 'Lucida Sans', Arial, sans-serif ,Geneva ,Verdana, Tahoma, sans-serif;
   height: 100%;
   align-items: center;
   /* display: flex; */

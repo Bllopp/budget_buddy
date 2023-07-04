@@ -4,7 +4,10 @@ const cors = require('cors');
 const app = express();
 const port = 8000;
 
-app.use(bodyParser.json());
+
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
@@ -12,7 +15,7 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'Y+4-p7?yP#QdYpAu&d_j8W^tskXfh',
+  password: 'yourpassword',
   database: 'sys'
 });
 
@@ -78,6 +81,18 @@ app.get('/', (req, res) => {
 app.get('/events', (req,res) => {
     res.send(events);
 })
+
+app.post('/receipt', (req, res) => {
+  const imageData = req.body.image;
+  connection.query('INSERT INTO tickets SET ?', { ticket_image: imageData }, (error, results, fields) => {
+    if (error) {
+      // handle the error here
+      res.status(500).send('An error occurred while saving the image');
+    } else {
+      res.send('Image saved!');
+    }
+  });
+});
 
 app.get('/items/:expense_id', (req, res) => {
   let expense_id = Number(req.params.expense_id)

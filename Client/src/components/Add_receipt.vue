@@ -13,7 +13,7 @@ export default {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #EF7F7F;
+  background-color: #8B3EFE;
   position: relative;
 }
 .circle {

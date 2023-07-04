@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "Kollektif";
+    font-weight: 400;
+    font-style: normal;
+    font-display: auto;
+    unicode-range: U+000-5FF;
+    src: local("Roboto"),
+      url("/fonts/Kollektif/Kollektif.woff2") format("woff2"),
+      url("/fonts/Kollektif/Kollektif.woff") format("woff");
+  }

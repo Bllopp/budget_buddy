@@ -27,5 +27,12 @@ export default {
   async getCategories(period){
     let res = await axios.get(api + "/categories");
     return res.data
+  },
+
+  async postImage(imageData) {
+    let res = await axios.post(api + "/receipt", { image: imageData });
+    return res.data;
   }
+
+  
 }

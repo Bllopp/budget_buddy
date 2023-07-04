@@ -1,6 +1,8 @@
 <template>
   <div id="historic">
-    <h2 id="Historic_title">Your historic</h2>
+    <div class="title-container">
+      <h2 id="Historic_title">Your historic</h2>
+    </div>
     <div v-for="expense in expenses" :key="expense.id">
     <Historic_item :data=expense />
 
@@ -71,18 +73,23 @@ components: {
 <style>
 
 #Historic_title{
-  color: white;
+  
+  /* position: sticky;
+  top: 0;  */
+ 
+  background: linear-gradient(to right, #07C4CC, #7D2AE8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  background-color: white;
+
+}
+
+
+.title-container {
   position: sticky;
   top: 0; 
-  transition: background-color 0.5s;
+  background-color: white;
 }
-
-#Historic_title.scrolled{
-  background-color: #EF7F7F;
-  transition: background-color 0.5s;
-}
-
-
 
 #buton {
 
