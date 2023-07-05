@@ -25,15 +25,6 @@ function PieChart(data, {
   if (names === undefined) names = N;
   names = new d3.InternSet(names);
 
-  // Chose a default color scheme based on cardinality.
-  const colorScale = d3.scaleLinear().domain([0, names.size - 1]).range([0, 1]);
-  const colors = Array.from({ length: names.size }, (_, i) =>
-    d3.interpolateRainbow(colorScale(i))
-  );
-
-  // Construct scales.
-  const color = d3.scaleOrdinal(names, colors);
-
   // Compute titles.
   if (title === undefined) {
     const formatValue = d3.format(format);
@@ -48,6 +39,15 @@ function PieChart(data, {
   const arcs = d3.pie().padAngle(padAngle).sort(null).value((i) => V[i])(I);
   const arc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
   const arcLabel = d3.arc().innerRadius(labelRadius).outerRadius(labelRadius);
+
+    // Chose a default color scheme based on cardinality.
+    const colorScale = d3.scaleLinear().domain([0, names.size - 1]).range([0, 1]);
+    const colors = Array.from({ length: names.size }, (_, i) =>
+      d3.interpolateRainbow(colorScale(i))
+    );
+  
+    // Construct scales.
+    const color = d3.scaleOrdinal(names, colors);
 
   const svg = d3
     .create("div")

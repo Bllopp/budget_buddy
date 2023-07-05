@@ -17,6 +17,10 @@ export default {
     ID: {
       type: String,
       required: true
+    },
+    title:{
+      type : String,
+      required : false
     }
   },
    mounted() {

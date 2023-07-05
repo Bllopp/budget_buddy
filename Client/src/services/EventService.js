@@ -2,9 +2,6 @@ import axios from "axios"
 const api = 'http://localhost:8000';
 
 export default {
-
-
-
   async getEvents() {
     let res = await axios.get(api + "/events");
     return res.data;
@@ -24,7 +21,7 @@ export default {
     return res.data
   },
 
-  async getCategories(period){
+  async getCategories(){
     let res = await axios.get(api + "/categories");
     return res.data
   },
@@ -32,7 +29,11 @@ export default {
   async postImage(imageData) {
     let res = await axios.post(api + "/receipt", { image: imageData });
     return res.data;
+  },
+
+  async getData(){
+    let res = await axios.get(api + "/items");
+    return res;
   }
 
-  
 }

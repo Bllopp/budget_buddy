@@ -28,7 +28,7 @@ export default {
     chart1:{
       id_: 'chart1',
     dataChart: [
-      { name: 'toto', value: 10 },
+      { name: 'toto', value: 10},
       
       { name: 'tuta', value: 5 }
     ]},

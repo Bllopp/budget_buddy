@@ -15,7 +15,7 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'yourpassword',
+  password: 'Y+4-p7?yP#QdYpAu&d_j8W^tskXfh',
   database: 'sys'
 });
 
@@ -84,7 +84,7 @@ app.get('/events', (req,res) => {
 
 app.post('/receipt', (req, res) => {
   const imageData = req.body.image;
-  connection.query('INSERT INTO tickets SET ?', { ticket_image: imageData }, (error, results, fields) => {
+  connection.query('INSERT INTO tickets SET ?', { ticket_image: imageData }, (error, results) => {
     if (error) {
       // handle the error here
       res.status(500).send('An error occurred while saving the image');
@@ -124,12 +124,20 @@ app.get('/categories', (req,res) => {
   )
 })
 
-
 app.get('/events/:id', (req, res) => {
     const id = Number(req.params.id);
     const event = events.find(event => event.id === id);
     res.send(event);
   });
+
+  app.get('/items', (req,res)=>{
+    connection.query(
+      'SELECT i.id, i.name, i.price from items as i GROUP BY i.name;', (err, result) => {
+      if(err) console.error(err)
+      else res.json(result)
+      }
+    )
+  })
 
 // listen on the port
 app.listen(port);

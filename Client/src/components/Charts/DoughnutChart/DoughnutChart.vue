@@ -1,4 +1,7 @@
-<template><div :id="ID"></div></template>
+<template>
+<div :id="ID">
+  <h2>{{ title }}</h2>
+</div></template>
 
 <script>
 import PieChart from './index.js';
@@ -17,6 +20,10 @@ export default {
     ID: {
       type: String,
       required: true
+    }, 
+    title : {
+      type: String,
+      required : false
     }
   },
     mounted() {
