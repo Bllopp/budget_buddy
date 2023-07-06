@@ -15,7 +15,7 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'yourpassword',
+  password: 'password',
   database: 'sys'
 });
 
@@ -112,7 +112,7 @@ app.get('/items/:expense_id', (req, res) => {
 app.get('/categories', (req,res) => {
   // let period = String(req.params.period)
   connection.query(
-    'SELECT categories.name, SUM(items.price) FROM items JOIN expenses ON expenses.id=items.expense_id JOIN categories ON categories.id=items.category_id GROUP BY categories.name', (err, results) => {
+    'SELECT categories.id, categories.name, SUM(items.price) FROM items JOIN expenses ON expenses.id=items.expense_id JOIN categories ON categories.id=items.category_id GROUP BY categories.name', (err, results) => {
       if (err) {
         console.error(err)
       } else {

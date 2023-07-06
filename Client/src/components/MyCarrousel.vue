@@ -1,15 +1,16 @@
 <template>
   <div>
-    <ul class="drag">
-      <li v-for="event in events" :key="event.id" class="click" @click="selected_category=event.id" >
-        {{ event.name }}
-        <DoughnutChart :ID="chartID_name + event.id" :data="chart1.dataChart" :params="paramsChart" />
+    <ul v-if="this.categories.length > 0" class="drag" >
+      <li  v-for="category in this.categories" :key="category.id"  class="click" @click="selected_category=category.id" >
+        {{ category.name }}
+        <DoughnutChart :ID="chartID_name + category.id" :data="chart1.dataChart" :params="paramsChart" />
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import EventService from '../services/EventService.js'
 import DoughnutChart from './Charts/DoughnutChart/DoughnutChart.vue';
 
 export default {
@@ -23,8 +24,10 @@ export default {
       name: (d) => d.name,
       value: (d) => Math.round((100 * d.value) / 30),
       width: 200,
-      height: 200
+      height: 200,
+ 
     },
+    categories : {},
     chart1:{
       id_: 'chart1',
     dataChart: [
@@ -43,6 +46,18 @@ export default {
     this.emitter.emit('change_category', this.selected_category);
     // console.log(this.selected_category);
   }
+},
+async beforeCreate(){
+
+  EventService.getCategories().then(response => {
+    this.categories = response
+    console.log(this.categories)
+  })
+  .catch(error => {
+      console.log(error)
+    })
+
+
 },
 
   async mounted() {
