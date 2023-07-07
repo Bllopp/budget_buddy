@@ -97,7 +97,7 @@ app.post('/receipt', (req, res) => {
 app.get('/items/:expense_id', (req, res) => {
   let expense_id = Number(req.params.expense_id)
   connection.query(
-    'SELECT items.name, items.price, items.quantity from items WHERE expense_id = ?',
+    'SELECT items.name, items.price from items WHERE expense_id = ?',
     [expense_id],
     (err, results) => {
       if (err) {
