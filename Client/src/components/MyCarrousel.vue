@@ -47,7 +47,7 @@ export default {
     // console.log(this.selected_category);
   }
 },
-async beforeCreate(){
+async created(){
 
   EventService.getCategories().then(response => {
     this.categories = response

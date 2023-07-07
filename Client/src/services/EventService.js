@@ -1,4 +1,6 @@
 import axios from "axios"
+const FormData = require('form-data');
+const Buffer = require('buffer');
 const api = 'http://localhost:8000';
 
 export default {
@@ -32,6 +34,32 @@ export default {
   async postImage(imageData) {
     let res = await axios.post(api + "/receipt", { image: imageData });
     return res.data;
+  },
+
+  async detectImage(imageDataUrl){
+    const receiptOcrEndpoint = 'https://ocr.asprise.com/api/v1/receipt';
+    const imageData = imageDataUrl.split(',')[1];
+
+    let form = new FormData();
+    form.append('api_key', 'TEST'); // Use 'TEST' for testing purpose
+    form.append('recognizer', 'auto'); // can be 'US', 'CA', 'JP', 'SG' or 'auto'
+    form.append('ref_no', 'ocr_nodejs_123'); // optional caller provided ref code
+
+    // Create a Blob from the image data URL
+    fetch(imageDataUrl)
+      .then(res => res.blob())
+      .then(blob => {
+        form.append('file', blob, { filename: 'receipt.jpg' }); // the image data
+
+        axios.post(receiptOcrEndpoint, form)
+        .then(response => {
+          console.log(response.data); // Receipt OCR result in JSON
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      });
+ 
   }
 
   

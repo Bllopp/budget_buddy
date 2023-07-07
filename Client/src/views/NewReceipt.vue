@@ -153,13 +153,14 @@ export default {
       console.log('ENVOYEZ lIMAGE AU SERVER')
       ev.preventDefault();
       const data = canvas.toDataURL('image/png');
-      EventService.postImage(data)
-      .then((response) => {
-        console.log(response)
-      })
-      .catch((error) => {
-      // handle the error here
-    });
+      EventService.detectImage(data);
+    //   EventService.postImage(data)
+    //   .then((response) => {
+    //     console.log(response)
+    //   })
+    //   .catch((error) => {
+    //   // handle the error here
+    // });
     },
     false
   );
@@ -206,7 +207,7 @@ function sendImage() {
     canvas.height = height;
     context.drawImage(video, 0, 0, width, height);
 
-    const data = canvas.toDataURL("image/png");
+    const data = canvas.toDataURL("image/png",1.0);
     photo.setAttribute("src", data);
     photo.style.display = 'inline'; // show the img element
     video.style.display = 'none'; // hide the video element
